@@ -31,13 +31,13 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
       # Step 5: Update kubeconfig for EKS
       - name: Update kubeconfig
-        run: aws eks update-kubeconfig --name my-eks-cluster --region ${{ secrets.AWS_REGION }}
+        run: aws eks update-kubeconfig --name netflix-cluster --region ${{ secrets.AWS_REGION }}
 
       # Step 6: Deploy to EKS
       - name: Deploy to EKS
